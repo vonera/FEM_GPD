@@ -43,7 +43,8 @@ The resulting switching process `$Γ(s, t)$` provides a posteriori a pragmatic d
 		* mex MEX_GPDresid.cpp GSL_Helper.cpp -I/PATH_TO_GSL/include -L/Users/loka/PATH_TO_GSL/lib -lgsl
 		* mex MEX_GPDestimate.cpp GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
 		* MEX_GPDcomputeAcf.cpp  GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
-	 and execute these three lines after each other in the MATLAB command line.
+	 and execute these three lines after each other in the MATLAB command line. If y can not compile the mex files (no gsl, no mex-complier) you can use the MATLAB GPD version (very slow!) by using 
+	 	cfg.model.subtype = 'GPDmatlab';
 	* Go to FEM_GPD/demo and run main_demo.m
 	* In case you use Gurobi, uncomment the following lines in main_demo and adjust the PATH_TO_GUROBI (check gurobi instructions)
 		 path = pwd;
@@ -85,7 +86,18 @@ end
 The framework is configured in adjustCFG.m file: 
 
 ```matlab
+%%%%%%%%%%%%%%%%%%%%%%%
+%choose the model
+cfg = FEM.getdefaultCfg('MCMC','SPATIAL_BV_Mat'); % no Gurobi, attention be very slow!
+cfg.model.subtype = 'GPDcpp';
+
+% options
+%cfg = FEM.getdefaultCfg('MCMC','parforSPATIAL_BV_Gurobi'); % with Gurobi and no spatial regularizaiton
+%cfg = FEM.getdefaultCfg('MCMC','SPATIAL_BV_Gurobi'); % with Gurobi and spatial regularizaiton
+%cfg.model.subtype = 'GPDmatlab'; % if, gsl or mexcomplier can not be used, or attention using matlab will be very slow!
+
 %%%%%%%%%%%%%%%%%%%%%%%%%
+% GPD options
 % expected same number of combinations in covariates for ksi, si
 cfg.model.ut_combis{1} = {[3 5 7 8 11]}; % cell of arrays: {[1 2 3] [2 3 4]} ...
 cfg.model.ut_combis{2} = {[3 5 7 8 11]}; 
@@ -98,12 +110,28 @@ cfg.modelFit.subspaceItr = 1000; % int
 cfg.modelFit.Klist = [1 2];   % array
 cfg.modelFit.Ctlist = 10:10:20; % array
 cfg.modelFit.Cnlist = inf; % please note inf for BV indicates: no spatial regularisation
-```matlab
+
+
+%%%%%%%%%
+% Gamma options 
+cfg.gamma.num_fe   = 600;
+cfg.gamma.discrete = [];
+cfg.gamma.distMatrix = distMatrix;
+cfg.gamma.positionSwitch = [];
+ 
+
+%%%%%%%%%%%
+%options for 'SPATIAL_BV_Gurobi'
+cfg.gamma.discrete = 'I'; %'B'-binary; 'I'-integer; 'C'-continous
+cfg.gamma.diagnostics = 0; 
+
+```
 
 
 #### Choosing the best model
 The best model is chosen wrt. Information Criteria. Available criteria are AIC, AICc, BIC. 
 In the application we used AICc, to adjust please change the string 'AICc' in line to 'AIC' or 'BIC'
+
 ```matlab
 optRes = rHandler.getBest('AICc');
 ```

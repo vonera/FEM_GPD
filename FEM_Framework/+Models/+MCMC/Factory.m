@@ -66,18 +66,14 @@ classdef Factory < Core.Construction.FactoryMODEL
         function pest = createParamEstimator(self, cfg, input) % model
             
             self.checkTYPE(cfg.type);
-            
-            if strcmp(cfg.subtype, 'GEVmatlab')
-                pest = Models.MCMC.GEV.PEstimator(cfg, input);
-            elseif strcmp(cfg.subtype, 'GEVcpp')
-                pest = Models.MCMC.GEV.MCMCMetFNT.PEstimator(cfg, input);
-            elseif strcmp(cfg.subtype, 'GPDmatlab')
+
+            if strcmp(cfg.subtype, 'GPDmatlab')
                 pest = Models.MCMC.GPD.PEstimator(cfg, input);
             elseif strcmp(cfg.subtype, 'GPDcpp')
                 pest = Models.MCMC.GPD.GPDcpp.PEstimator(cfg, input);
             else
                 error(['something wrong with MCMC Model SubType ' cfg.subtype ...
-                    ' expected {GEVmatlab, GEVcpp, GPDmatlab, GPDcpp}']);
+                    ' expected {GPDmatlab, GPDcpp}']);
             end
         end
         
@@ -86,11 +82,7 @@ classdef Factory < Core.Construction.FactoryMODEL
             
             self.checkTYPE(cfg.model.type);
             
-            if strcmp(cfg.model.subtype, 'GEVmatlab')
-                iHandler = Models.MCMC.GEV.InputHandler(cfg, xt, ut);
-            elseif strcmp(cfg.model.subtype, 'GEVcpp')
-                iHandler = Models.MCMC.GEV.InputHandler(cfg, xt, ut);
-            elseif strcmp(cfg.model.subtype, 'GPDmatlab')
+            if strcmp(cfg.model.subtype, 'GPDmatlab')
                 iHandler = Models.MCMC.GPD.InputHandler(cfg, xt, ut);
             elseif strcmp(cfg.model.subtype, 'GPDcpp')
                 iHandler = Models.MCMC.GPD.InputHandler(cfg, xt, ut);
@@ -103,12 +95,7 @@ classdef Factory < Core.Construction.FactoryMODEL
         function input = createInput(self, cfg, meta, xt, ut) % model
             
             self.checkTYPE(cfg.model.type);
-            
-            if strcmp(cfg.model.subtype, 'GEVmatlab')
-                input = Models.MCMC.GEV.Input(meta, xt, ut);
-            elseif strcmp(cfg.model.subtype, 'GEVcpp')
-                input = Models.MCMC.GEV.Input(meta, xt, ut);
-            elseif strcmp(cfg.model.subtype, 'GPDmatlab')
+            if strcmp(cfg.model.subtype, 'GPDmatlab')
                 input = Models.MCMC.GPD.Input(meta, xt, ut);
             elseif strcmp(cfg.model.subtype, 'GPDcpp')
                 input = Models.MCMC.GPD.Input(meta, xt, ut);
@@ -120,7 +107,7 @@ classdef Factory < Core.Construction.FactoryMODEL
         %------------------------------------------------------------------
         function cfg = createExapmleModelCFG(self, type) % string
             self.checkTYPE(type);
-            cfg = Models.MCMC.Config(type,'GEVmatlab',100, 500, 0, 0, false, 0.0005,1,1.5,0.01,1.01,0.1,{{[1,2]}, {[1,2]}, {[1,2]}}, 0);
+            cfg = Models.MCMC.Config(type,'GPDmatlab', 100, 500, 0, 0, false, 0.0005,1,1.5,0.01,1.01,0.1,{{[1,2]}, {[1,2]}, {[1,2]}}, 0);
         end
         
     end
