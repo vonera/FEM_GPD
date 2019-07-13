@@ -1,3 +1,4 @@
->> mex MEX_GPDresid.cpp GSL_Helper.cpp -I/opt/local/include -L/opt/local/lib -lgsl
->> mex MEX_GPDestimate.cpp GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/opt/local/include -L/opt/local/lib -lgsl
->> mex MEX_GPDcomputeAcf.cpp  GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/opt/local/include -L/opt/local/lib -lgsl
+>> mex MEX_GPDresid.cpp GSL_Helper.cpp -I/PATH_TO_GSL/include -L/Users/loka/PATH_TO_GSL/lib -lgsl
+>> mex MEX_GPDestimate.cpp GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
+>> MEX_GPDcomputeAcf.cpp  GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
+

@@ -65,8 +65,7 @@ classdef Factory
         function gammaEst = createGammaEstimator(cfg, input, K, Ct, Cn)
             
             mfac = Core.Construction.Factory.createModelFactory(cfg.model.type);
-                        
-            gammaEst = mfac.createGEstimator(cfg, input, K, Ct, Cn);
+                                    gammaEst = mfac.createGEstimator(cfg, input, K, Ct, Cn);
         
         end
                

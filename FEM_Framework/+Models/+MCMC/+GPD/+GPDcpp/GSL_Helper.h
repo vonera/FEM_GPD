@@ -30,10 +30,13 @@ public:
 
 	virtual const char* what() const throw () {
 		std::string message(text);
-
+        std::stringstream ss;
+        
 		message.append(" : errornum : ");
-
-		message.append(static_cast<std::ostringstream*>(&(std::ostringstream() << errnum))->str());
+        ss << errnum;
+        message.append(ss.str());
+        
+        //message.append(static_cast<std::ostringstream*>(&(std::ostringstream() << errnum))->str());
 
 		return message.c_str();
 	}
