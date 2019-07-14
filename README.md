@@ -7,7 +7,7 @@ We present here the FEM-BV-GPD framework for a data-driven spatio-temporal regre
 Given a series of threshold excesses and covariates for multiple locations the framework provides an optimal sparse solution for the spatio-temporal clustering problem by incorporating information theory based model selection criteria and L1-regularized regression. The framework goes beyond a priori probabilistic and deterministic assumptions typical for standard approaches like Hidden Markov Models (HMM) and Gaussian Mixture Models (GMM). 
 
 
-The nonstationarity and the non-homogeneity of the data are resolved by describing the underlying behavior by a set of $K\leq 1$ locally stationary models and a spatial nonstationary switching process $Γ(s, t)$, where $K > 1$ indicates the existence of systematically missing covariates.
+The nonstationarity and the non-homogeneity of the data are resolved by describing the underlying behavior by a set of \(K\leq 1\) locally stationary models and a spatial nonstationary switching process \(Γ(s, t)\), where \(K > 1\) indicates the existence of systematically missing covariates.
 
 
 The realization of framework allows to consider simultaneously different configurations of the problem referring to hyper-parameter tuning of:
