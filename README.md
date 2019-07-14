@@ -7,7 +7,7 @@ We present here the FEM-BV-GPD framework for a data-driven spatio-temporal regre
 Given a series of threshold excesses and covariates for multiple locations the framework provides an optimal sparse solution for the spatio-temporal clustering problem by incorporating information theory based model selection criteria and L1-regularized regression. The framework goes beyond a priori probabilistic and deterministic assumptions typical for standard approaches like Hidden Markov Models (HMM) and Gaussian Mixture Models (GMM). 
 
 
-The nonstationarity and the non-homogeneity of the data are resolved by describing the underlying behavior by a set of \(K\leq 1\) locally stationary models and a spatial nonstationary switching process \(Γ(s, t)\), where \(K > 1\) indicates the existence of systematically missing covariates.
+The nonstationarity and the non-homogeneity of the data are resolved by describing the underlying behavior by a set of K>=1 locally stationary models and a spatial nonstationary switching process Γ(s, t), where K > 1 indicates the existence of systematically missing covariates.
 
 
 The realization of framework allows to consider simultaneously different configurations of the problem referring to hyper-parameter tuning of:
@@ -23,7 +23,7 @@ The final output of the framework is
 The resulting spatial FEM-BV-GPD can be employed as a robust exploratory sparse regression analysis tool for spatio-temporal extremes, that enables to iden- tify the significant resolved covariates and to account for the influence from the systematically missing ones.
 
 #### Spatial dependence structure 
-The resulting switching process $Γ(s, t)$ provides a posteriori a pragmatic description of the underlying spatial dependence structure by grouping together all locations that exhibit similar behavior in $Γ(s, t)$, e.g., by estimating the Event Synchronization (ES) measure matrix [1] which allows to identify contiguous regions that exhibit similar spatio-temporal behavior. The estimation of the ES-matrix is included in the framework.
+The resulting switching process Γ(s, t) provides a posteriori a pragmatic description of the underlying spatial dependence structure by grouping together all locations that exhibit similar behavior in Γ(s, t), e.g., by estimating the Event Synchronization (ES) measure matrix [1] which allows to identify contiguous regions that exhibit similar spatio-temporal behavior. The estimation of the ES-matrix is included in the framework.
 
 [1] N. Malik, B. Bookhagen, N. Marwan, and J. Kurths. Analysis of spatial and temporal extreme monsoonal rainfall over south asia using complex networks.
 
@@ -113,8 +113,8 @@ cfg.modelFit.Cnlist = inf; % inf for BV indicates: no spatial regularization
 
 ```
 Further it is possible to set parameters for the switching process optimization. For instance
-you can set the number of finite elements used for discretization of $Γ(s, t)$, 
-where $cfg.gamma.num_fe = NT$. If $xt$ is very long, setting $NT << T$, will reduce the computational time. But, in this case a model switching can happen only every $len(xt)/num_fe$. If the 
+you can set the number of finite elements used for discretization of Γ(s, t), 
+where cfg.gamma.num_fe = NT. If xt is very long, setting NT << T, will reduce the computational time. But, in this case a model switching can happen only every len(xt)/num_fe. If the 
 
 ```matlab
 %%%%%%%%%
