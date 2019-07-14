@@ -11,16 +11,13 @@ The nonstationarity and the non-homogeneity of the data are resolved by describi
 
 
 The realization of framework allows to consider simultaneously different configurations of the problem referring to hyper-parameter tuning of:
-	* the number of clusters,
-	* number of switches,
-	* different configuration of covariates
-	* different L1-regularizations 
-
-The final output of the framework is 
+ * the number of clusters,
+ * number of switches,
+ * different configuration of covariates
+ * different L1-regularizations 
 
 
-
-The resulting spatial FEM-BV-GPD can be employed as a robust exploratory sparse regression analysis tool for spatio-temporal extremes, that enables to iden- tify the significant resolved covariates and to account for the influence from the systematically missing ones.
+The resulting spatial FEM-BV-GPD can be employed as a robust exploratory sparse regression analysis tool for spatio-temporal extremes, that enables to identify the significant resolved covariates and to account for the influence from the systematically missing ones.
 
 #### Spatial dependence structure 
 The resulting switching process Γ(s, t) provides a posteriori a pragmatic description of the underlying spatial dependence structure by grouping together all locations that exhibit similar behavior in Γ(s, t), e.g., by estimating the Event Synchronization (ES) measure matrix [1] which allows to identify contiguous regions that exhibit similar spatio-temporal behavior. The estimation of the ES-matrix is included in the framework.
