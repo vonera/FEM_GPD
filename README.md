@@ -45,7 +45,8 @@ The resulting switching process Γ(s, t) provides a posteriori a pragmatic descr
 		* mex MEX_GPDresid.cpp GSL_Helper.cpp -I/PATH_TO_GSL/include -L/Users/loka/PATH_TO_GSL/lib -lgsl
 		* mex MEX_GPDestimate.cpp GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
 		* MEX_GPDcomputeAcf.cpp  GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
-	 and execute these three lines after each other in the MATLAB command line. If y can not compile the mex files (no gsl, no mex-complier) you can use the MATLAB GPD version (very slow!) by using 
+	 
+	and execute these three lines after each other in the MATLAB command line. If y can not compile the mex files (no gsl, no mex-complier) you can use the MATLAB GPD version (very slow!) by using 
 	 	cfg.model.subtype = 'GPDmatlab';
 	* Go to FEM_GPD/demo and run main_demo.m
 	* In case you use Gurobi, uncomment the following lines in main_demo and adjust the PATH_TO_GUROBI (check gurobi instructions)
