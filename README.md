@@ -39,7 +39,7 @@ The resulting switching process Γ(s, t) provides a posteriori a pragmatic descr
 	* open Matlab
 	* go to FEM_GPD/+Models/+MCMC/+GPD/+GPDcpp/
 	* change PATH_TO_GSL in 
-		* mex MEX_GPDresid.cpp GSL_Helper.cpp -I/PATH_TO_GSL/include -L/Users/loka/PATH_TO_GSL/lib -lgsl
+		* mex MEX_GPDresid.cpp GSL_Helper.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
 		* mex MEX_GPDestimate.cpp GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
 		* MEX_GPDcomputeAcf.cpp  GSL_Helper.cpp MCMCMetGPD.cpp MCMCMet.cpp -I/PATH_TO_GSL/include -L/PATH_TO_GSL/lib -lgsl
 	 
@@ -97,8 +97,8 @@ cfg.model.subtype = 'GPDcpp';
 %%%%%%%%%%%%%%%%%%%%%%%%%
 % GPD options
 % expected same number of combinations in covariates for ksi, si
-cfg.model.ut_combis{1} = {[3 5 7 8 11]}; % cell of arrays: e.g. {[1 2 3], [2 3 4], []} ...
-cfg.model.ut_combis{2} = {[3 5 7 8 11]}; 
+cfg.model.ut_combis{1} = {[1 2]}; % cell of arrays: e.g. {[1 2 3], [2 3 4], []} ...
+cfg.model.ut_combis{2} = {[]}; 
 
 %%%%%%%%%%%%%%%
 % FEM options
