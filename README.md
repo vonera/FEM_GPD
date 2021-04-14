@@ -172,7 +172,7 @@ conf_int = infHandler.getConf4Theta();
 
 
 #### How to Cite
-O. Kaiser, D. Igdalov, O. Martius,  and I. Horenko. On Computationally-Scalable Spatio-Temporal Regression Clustering of Precipitation Threshold Excesses. **arxiv**.
+O. Kaiser, D. Igdalov, O. Martius,  and I. Horenko. On Computationally-Scalable Spatio-Temporal Regression Clustering of Precipitation Threshold Excesses. **https://arxiv.org/abs/2103.16687**.
 
 
 #### Help, it's not working!!
